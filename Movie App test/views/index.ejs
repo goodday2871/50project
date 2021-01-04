@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <body>
+      <header>
+        <form action="/search" method="GET">
+          <input
+            type="text"
+            id="search"
+            class="search"
+            placeholder="search..."
+            name="search"
+            required
+          />
+          <button id="submit"><i class="fas fa-search"></i></button>
+        </form>
+      </header>
+      <main id="main">
+        <%for(let movie of data){%>
+        <div class="movie">
+          <img
+            src="https://image.tmdb.org/t/p/w1280<%=movie.poster_path%>"
+            alt="<%=movie.title%>"
+          />
+          <div class="movie-info">
+            <h3><%=movie.title%></h3>
+
+            <% if(movie.vote_average>8) {%>
+            <span class="green"><%=movie.vote_average%></span>
+            <% } else if(movie.vote_average>=5) {%>
+            <span class="orange"><%=movie.vote_average%></span>
+            <% }else{ %>
+            <span class="red"><%=movie.vote_average%></span>
+            <% } %>
+          </div>
+          <div class="overview">
+            <h3>OverView</h3>
+            <%=movie.overview%>
+          </div>
+        </div>
+        <%}%>
+      </main>
+      <script
+        src="https://kit.fontawesome.com/319fead75b.js"
+        crossorigin="anonymous"
+      ></script>
+    </body>
+  </body>
+</html>
